@@ -7,10 +7,16 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
-    inputContainer: {borderRadius:30,  backgroundColor:'white'},
+    inputContainer: {borderRadius:30,  backgroundColor:'white', marginBottom:-10},
     buttonContainer : {
         width: 200,
         marginHorizontal: 50,
         marginVertical: 10,
-      }
+      },
+    buttonTitle : { color: 'white', marginHorizontal: 20 },
+    buttonStyle : { backgroundColor: 'rgba(39, 39, 39, 1)'},
+    fail: {
+        textAlign:'center',
+        color: 'red'
+      },
   });

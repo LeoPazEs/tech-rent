@@ -1,7 +1,7 @@
-import { Loginscreen } from './src/screens/login';
+import { NavegacaoPrincipal } from './src/navigations';
 
 export default function App() {
   return (
-      <Loginscreen/>
+      <NavegacaoPrincipal/>
   );
 }
