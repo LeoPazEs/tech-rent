@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Lojascreen } from "../screens/loja";
 import { MaterialIcons } from "@expo/vector-icons";
+import { AutenticadoNavegacaoStack } from "./StackAutenticado";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +16,7 @@ const TabNavigator = () => {
     >
       <Tab.Screen
         name="loja"
-        component={Lojascreen}
+        component={AutenticadoNavegacaoStack}
         options={{
           tabBarLabel: "Loja",
           tabBarIcon: () => <MaterialIcons name="store" size={20} />,

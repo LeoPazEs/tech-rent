@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { ImageBackground, ScrollView, View } from 'react-native';
+import { ImageBackground, ScrollView } from 'react-native';
 import { Button,  Text,  } from 'react-native-elements';
 import {  Card } from '@rneui/themed';
 import { buttonStyles } from '../styles/buttonStyle';
@@ -8,14 +7,13 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import background from './../../../assets/imgs/background.jpg'
 import macbook from './../../../assets/imgs/macbook-air-space-gray-select-201810.jpg'
 import { StackNavigationProp } from '@react-navigation/stack'
-import { NavegacaoPrincipalParams } from '../../navigations';
 import { useNavigation } from '@react-navigation/native';
+import { NavegacaoPrincipalParams } from '../../navigations';
 
 export interface LojacreenProps{}
 
 export function Lojascreen(props: LojacreenProps){
-    type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login'>;
-    const navigation = useNavigation<navProps>();
+    const navigation = useNavigation<any>();
 
     return (
         <ImageBackground source={background} style={generalStyles.background}>
@@ -37,9 +35,9 @@ export function Lojascreen(props: LojacreenProps){
                 structure than actual design.
             </Text>
             <Button
-                onPress={() => navigation.navigate('login')}
+                onPress={() => navigation.navigate('detalhe')}
                 buttonStyle={buttonStyles.buttonStyle}
-                title="RENT"
+                title="Detalhes"
             />
             </Card>   
             <Card>
@@ -58,9 +56,9 @@ export function Lojascreen(props: LojacreenProps){
                 structure than actual design.
             </Text>
             <Button
-                onPress={() => navigation.navigate('login')}
+                onPress={() => navigation.navigate('detalhe')}
                 buttonStyle={buttonStyles.buttonStyle}
-                title="RENT"
+                title="Detalhes"
             />
             </Card>  
             <Card>
@@ -79,9 +77,9 @@ export function Lojascreen(props: LojacreenProps){
                 structure than actual design.
             </Text>
             <Button
-                onPress={() => navigation.navigate('login')}
+                onPress={() => navigation.navigate('detalhe')}
                 buttonStyle={buttonStyles.buttonStyle}
-                title="RENT"
+                title="Detalhes"
             />
             </Card> 
         </ScrollView>

@@ -2,14 +2,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from  "@react-navigation/stack";
 import { Loginscreen } from "../screens/login";
 import { Registrarscreen } from "../screens/registrar";
-import { Lojascreen } from "../screens/loja";
 import TabNavigator from "./bottomtabs"
-
 
 export type NavegacaoPrincipalParams = {
     login: undefined,
     registrar: undefined,
-    autenticado: undefined
+    autenticado: undefined,
+    autenticadoStack: undefined,
 }
 const Stack = createStackNavigator<NavegacaoPrincipalParams>();
 
