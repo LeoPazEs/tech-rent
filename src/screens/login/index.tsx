@@ -24,7 +24,7 @@ export function Loginscreen(props: LoginscreenProps){
             <Formik  initialValues={{email: '', senha: ''}} validationSchema={Yup.object().shape({
             email: Yup.string().required('Informe o email.').email('E-mail não válido'),
             senha: Yup.string().required('Informe a senha.')
-            })} onSubmit = {() => navigation.navigate('loja')}>
+            })} onSubmit = {() => navigation.navigate('autenticado')}>
                 {({errors, touched, handleSubmit, handleChange, handleBlur}) => (
                     <>
                         <CardTitle style={{fontSize:80}}>Tech Rent</CardTitle>
