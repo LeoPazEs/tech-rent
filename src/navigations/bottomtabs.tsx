@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Lojascreen } from "../screens/loja";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AutenticadoNavegacaoStack } from "./StackAutenticado";
+import { CarrinhoScreen } from "../screens/loja/carrinho";
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +25,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="carrinho-compras"
-        component={Lojascreen}
+        component={CarrinhoScreen}
         options={{
           tabBarLabel: "Carrinho",
           tabBarIcon: () => <MaterialIcons name="shopping-cart" size={20} />,
