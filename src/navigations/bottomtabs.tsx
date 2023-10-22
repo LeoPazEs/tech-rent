@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Lojascreen } from "../screens/loja";
+import { PerfilScreen } from "../screens/perfil";
 import { MaterialIcons } from "@expo/vector-icons";
 import { AutenticadoNavegacaoStack } from "./StackAutenticado";
 import { CarrinhoScreen } from "../screens/loja/carrinho";
@@ -33,7 +33,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="perfil"
-        component={Lojascreen}
+        component={PerfilScreen}
         options={{
           tabBarLabel: "Perfil",
           tabBarIcon: () => <MaterialIcons name="account-box" size={20} />,
