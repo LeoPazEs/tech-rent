@@ -6,6 +6,8 @@ import { generalStyles } from '../styles/telaStyle';
 import { cardStyles } from '../styles/cardStyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
+import Toast from 'react-native-root-toast';
+
 import background from './../../../assets/imgs/background.jpg'
 import macbook from './../../../assets/imgs/macbook-air-space-gray-select-201810.jpg'
 
@@ -13,6 +15,15 @@ export interface DetalheScreenProps {}
 
 export function ProdutoDetalheScreen(props: DetalheScreenProps) {
     const navigation = useNavigation<any>();
+    
+    const toastConfig =  {
+      duration: Toast.durations.LONG,
+      position: Toast.positions.BOTTOM,
+      shadow: true,
+      animation: true,
+      hideOnPress: true,
+      delay: 0,
+  };
 
   return (
     <ImageBackground source={background} style={generalStyles.background}>
@@ -35,7 +46,7 @@ export function ProdutoDetalheScreen(props: DetalheScreenProps) {
             </Text>
             <Text style={cardStyles.price}>Preço: R$999.99</Text>
             <Button
-              onPress={() => navigation.navigate('carrinho')}
+              onPress={() => Toast.show('Item adicionado no carrinho.',toastConfig)}
               buttonStyle={buttonStyles.buttonStyle}
               title="Comprar"
             />
