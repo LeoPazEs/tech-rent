@@ -32,8 +32,8 @@ export function Loginscreen(props: LoginscreenProps){
                         <Input placeholder='Digite sua senha'  onBlur={handleBlur('senha')} onChangeText={handleChange('senha')} leftIcon={{name:'lock', color:'black'}} secureTextEntry={true} inputContainerStyle={ formStyles.inputContainer}/>
                         { errors.email && touched.email && <Text style={formStyles.fail}>{errors.email}</Text>}
                         { errors.senha && touched.senha && <Text style={formStyles.fail}>{errors.senha}</Text>}
-                        <Button title="LOGAR" onPress={() => handleSubmit()} containerStyle={buttonStyles.buttonContainer}  titleStyle={buttonStyles.buttonTitle} buttonStyle={buttonStyles.buttonStyle}   type="outline" raised={true}  />
-                        <Button title="REGISTRAR-SE" onPress={() => navigation.navigate('registrar')} containerStyle={buttonStyles.buttonContainer}  titleStyle={buttonStyles.buttonTitle} buttonStyle={buttonStyles.buttonStyle}  type="outline" raised={true}  />
+                        <Button title="ENTRAR" onPress={() => handleSubmit()} containerStyle={buttonStyles.buttonContainer}  titleStyle={buttonStyles.buttonTitle} buttonStyle={buttonStyles.buttonStyle}   type="outline" raised={true}  />
+                        <Button title="CADASTRAR-SE" onPress={() => navigation.navigate('registrar')} containerStyle={buttonStyles.buttonContainer}  titleStyle={buttonStyles.buttonTitle} buttonStyle={buttonStyles.buttonStyle}  type="outline" raised={true}  />
                     </>
                 )}
             </Formik>
