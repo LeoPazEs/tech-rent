@@ -19,8 +19,8 @@ const TabNavigator = () => {
         name="loja"
         component={AutenticadoNavegacaoStack}
         options={{
-          tabBarLabel: "Loja",
-          tabBarIcon: () => <MaterialIcons name="store" size={20} />,
+          tabBarLabel: "Início",
+          tabBarIcon: () => <MaterialIcons name="home" size={20} />,
         }}
       />
       <Tab.Screen
