@@ -5,46 +5,35 @@ import { buttonStyles } from '../styles/buttonStyle';
 import { generalStyles } from '../styles/telaStyle';
 import { cardStyles } from '../styles/cardStyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { toastConfig } from '../styles/toastStyle';
 import Toast from 'react-native-root-toast';
-
 import background from './../../../assets/imgs/background.jpg'
-import macbook from './../../../assets/imgs/macbook-air-space-gray-select-201810.jpg'
 
 export interface DetalheScreenProps {}
 
 export function ProdutoDetalheScreen(props: DetalheScreenProps) {
-    const navigation = useNavigation<any>();
-    
-    const toastConfig =  {
-      duration: Toast.durations.LONG,
-      position: Toast.positions.BOTTOM,
-      shadow: true,
-      animation: true,
-      hideOnPress: true,
-      delay: 0,
-  };
+  const navigation = useNavigation<any>();
+  const route = useRoute();
+  const {product} = route.params;
+
 
   return (
     <ImageBackground source={background} style={generalStyles.background}>
       <SafeAreaView>
         <ScrollView>
           <Card>
-            <Card.Title>MacBook Air</Card.Title>
+            <Card.Title>{product?.nome}</Card.Title>
             <Card.Divider />
             <Card.Image
               style={cardStyles.image}
-              source={macbook}
+              source={{ uri: product.imagem }}
             />
             <Card.Divider />
             <Text style={cardStyles.text}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in leo vel odio bibendum vulputate.
-                Proin aliquam massa vel mi lacinia, ac vehicula libero fringilla. Nulla facilisi. Integer nec velit non
-                felis aliquet finibus. Suspendisse potenti. Sed elementum, elit at volutpat tincidunt, tellus justo
-                viverra dui, sit amet laoreet arcu libero in quam. Phasellus varius justo in vehicula euismod.
-                Suspendisse potenti.
+              {product.descricao}
             </Text>
-            <Text style={cardStyles.price}>Preço: R$999.99</Text>
+            <Text style={cardStyles.price}>Preço: R${product.valor}</Text>
             <Button
               onPress={() => Toast.show('Item adicionado no carrinho.',toastConfig)}
               buttonStyle={buttonStyles.buttonStyle}
