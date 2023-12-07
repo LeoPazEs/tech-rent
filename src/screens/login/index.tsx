@@ -19,7 +19,7 @@ export interface LoginscreenProps{}
 export function Loginscreen(props: LoginscreenProps){
     type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'registrar', 'loja'>;
     const navigation = useNavigation<navProps>();
-
+    
     const handleLogin = async (values: any) => {
         const auth = getAuth();
         try {

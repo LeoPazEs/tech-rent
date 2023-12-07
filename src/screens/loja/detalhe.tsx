@@ -7,6 +7,8 @@ import { cardStyles } from '../styles/cardStyle';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { toastConfig } from '../styles/toastStyle';
+import { getFirestore, doc, arrayUnion, updateDoc } from '@firebase/firestore';
+import { getAuth } from '@firebase/auth';
 import Toast from 'react-native-root-toast';
 import background from './../../../assets/imgs/background.jpg'
 
@@ -16,6 +18,18 @@ export function ProdutoDetalheScreen(props: DetalheScreenProps) {
   const navigation = useNavigation<any>();
   const route = useRoute();
   const {product} = route.params;
+  
+  const HandleAddProduct = async (values: any) => {
+      const auth = getAuth();
+      const db = getFirestore();
+      try {
+          const carrinho = doc(db, "carrinhos", auth.currentUser.uid);
+          updateDoc(carrinho, { produtos: arrayUnion(product.id) });
+          Toast.show('Item adicionado no carrinho.',toastConfig)
+      } catch (error) {
+          Toast.show("Um erro ocorreu, tente novamente.",toastConfig)
+      }
+  }
 
 
   return (
@@ -35,7 +49,7 @@ export function ProdutoDetalheScreen(props: DetalheScreenProps) {
             </Text>
             <Text style={cardStyles.price}>Preço: R${product.valor}</Text>
             <Button
-              onPress={() => Toast.show('Item adicionado no carrinho.',toastConfig)}
+              onPress={HandleAddProduct}
               buttonStyle={buttonStyles.buttonStyle}
               title="Comprar"
             />

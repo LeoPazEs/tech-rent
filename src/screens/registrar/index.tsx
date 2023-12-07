@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from '@firebase/auth';
+import { getFirestore, setDoc, doc} from '@firebase/firestore';
 import { ImageBackground, View } from 'react-native';
 import { Input, Button,  Text,  } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
@@ -20,11 +21,15 @@ export function Registrarscreen(props: RegistrarscreenProps){
     type navProps = StackNavigationProp<NavegacaoPrincipalParams, 'login'>;
     const navigation = useNavigation<navProps>();
 
+    
     const handleRegistration = async (values: any) => {
         const auth = getAuth();
+        const db = getFirestore();
         try {
+            Toast.show('Cadastrando usuário...',toastConfig)
             const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.senha);
             await updateProfile(userCredential.user, { displayName: values.nome });
+            await setDoc(doc(db, "carrinhos", userCredential.user.uid), { produtos: [] })
             Toast.show('Usuário cadastrado com sucesso.',toastConfig)
             navigation.navigate('login');
         } catch (error) {

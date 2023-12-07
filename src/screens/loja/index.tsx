@@ -23,11 +23,11 @@ export function Lojascreen(props: LojacreenProps){
     
     React.useEffect(() => {
         handleProducts();
-    });
+    }, []);
     
     const handleProducts = async () => {
         const resultados = await getDocs(collection(db, "produtos"));
-        const data = resultados.docs.map((doc) => doc.data());
+        const data = resultados.docs.map((doc) => ({id : doc.id, ...doc.data()}));
         setProductData(data);
     };
 
@@ -42,7 +42,7 @@ export function Lojascreen(props: LojacreenProps){
               <Card.Image style={cardStyles.image} source={{ uri: product.imagem }} />
               <Text style={cardStyles.text}>{product.descricao_resumida}</Text>
               <Button
-                onPress={() => navigation.navigate('detalhe', { product })}
+                onPress={() => navigation.navigate('detalhe', { product, })}
                 buttonStyle={buttonStyles.buttonStyle}
                 title="Detalhes"
               />
