@@ -22,8 +22,12 @@ export function Lojascreen(props: LojacreenProps){
 
     
     React.useEffect(() => {
-        handleProducts();
-    }, []);
+      const unsubscribe = navigation.addListener('focus', () => {
+          handleProducts();
+      });
+
+      return unsubscribe;
+  }, [navigation]);
     
     const handleProducts = async () => {
         const resultados = await getDocs(collection(db, "produtos"));
